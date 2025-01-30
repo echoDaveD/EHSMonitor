@@ -274,43 +274,6 @@ sensor:
     unit_of_measurement: °C
     state_class: measurement
     device_class: temperature
-  - name: Samsung Mono HT Quit - FSV_2011 Heating Curve Outdoor Max Temp
-    state_topic: ehsMonitor/samsung/heatingCurveOutTempMax
-    unique_id: samsung_mono_ht_quit_heatingCurveOutTempMax
-    unit_of_measurement: °C
-    state_class: measurement
-    device_class: temperature
-  - name: Samsung Mono HT Quit - FSV_2012 Heating Curve Outdoor Min Temp
-    state_topic: ehsMonitor/samsung/heatingCurveOutTempMin
-    unique_id: samsung_mono_ht_quit_heatingCurveOutTempMin
-    unit_of_measurement: °C
-    state_class: measurement
-    device_class: temperature
-  - name: Samsung Mono HT Quit - FSV_2021 Heating Curve UFH Max Temp
-    state_topic: ehsMonitor/samsung/heatingCurveUFHMax
-    unique_id: samsung_mono_ht_quit_heatingCurveUFHMax
-    unit_of_measurement: °C
-    state_class: measurement
-    device_class: temperature
-  - name: Samsung Mono HT Quit - FSV_2022 Heating Curve UFH Min Temp
-    state_topic: ehsMonitor/samsung/heatingCurveUFHMin
-    unique_id: samsung_mono_ht_quit_heatingCurveUFHMin
-    unit_of_measurement: °C
-    state_class: measurement
-    device_class: temperature
-  - name: Samsung Mono HT Quit - FSV_2031 Heating Curve FCU Max Temp
-    state_topic: ehsMonitor/samsung/heatingCurveFCUMax
-    unique_id: samsung_mono_ht_quit_heatingCurveFCUMax
-    unit_of_measurement: °C
-    state_class: measurement
-    device_class: temperature
-  - name: Samsung Mono HT Quit - FSV_2031 Heating Curve FCU Max Temp
-    state_topic: ehsMonitor/samsung/heatingCurveFCUMin
-    unique_id: samsung_mono_ht_quit_heatingCurveFCUMin
-    unit_of_measurement: °C
-    state_class: measurement
-    device_class: temperature
-
 
 # https://github.com/home-assistant/core/blob/master/homeassistant/const.py
 # list of valid device Classes

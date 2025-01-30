@@ -96,12 +96,6 @@ After This restart Home Assistant and the Entities should be present.
    - zone2FlowTemperature (getVAR_IN_TEMP_WATER_OUTLET_ZONE2_F)
    - roomTemperature (getVAR_in_temp_room_f)
    - roomTargetTemperature (getVAR_in_temp_target_f)
-   - heatingCurveOutTempMax (getVAR_IN_FSV_2011)
-   - heatingCurveOutTempMin (getVAR_IN_FSV_2012)
-   - heatingCurveUFHMax (getVAR_IN_FSV_2021)
-   - heatingCurveUFHMin (getVAR_IN_FSV_2022)
-   - heatingCurveFCUMax (getVAR_IN_FSV_2032)
-   - heatingCurveFCUMin (getVAR_IN_FSV_2032)
 - added Autostart config in Dockerfile
 - added Homeassistent MQQT Entity definitions
  
