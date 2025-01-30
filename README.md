@@ -14,7 +14,7 @@ more detailed description under [wiki](https://wiki.myehs.eu/wiki/F1/F2_connecto
 
 ## Run from Dockerfile
 1. Clone this repository
-2. Run `docker build -t ehsmonitor EHSMonitor/.`
+2. Build Docker Image `docker build -t ehsmonitor EHSMonitor/.`
 3. Create an Folder to store the Configuration file `mkdir EHSMonitor_dockervolume`
 4. Copy the Sample Configuration file `cp EHSMonitor/Resources/ExampleConfiguration.json EHSMonitor_dockervolume/Configuration.json`
 5. Edit the `Configuration.json` with your favorite editor
@@ -37,6 +37,16 @@ Start the EHSMonitor within your docker instance `docker exec -it ehsmonitor .bu
 By default the build command will build the executable in a debug configuration. As this is an early development release, this is fine. The executable will be located at `./.build/debug/EHSMonitor` inside your local copy of the repository.
 
 Run the executlabe via `./.build/debug/EHSMonitor --config $PathToConfigurationFile`
+
+## Upgrade docker image
+
+- Stop docker container `docker stop ehsmonitor`
+- Build the new docker image (it is recommended to create a new docker image, so can always go back) `docker build -t ehsmonitor_new EHSMonitor/.`
+- Run the new docker image `docker run --restart=always --device=/dev/ttyUSB0 -v /root/EHSMonitor_dockervolume:/media/persistvol --name ehsmonitor_new -dt ehsmonitor_new`
+
+If Anything is Fine, you can delete the old container/image and repeat it without the _new suffix
+
+- Remove docker container  `docker rm ehsmonitor` 
 
 ## Home Assistant Integration
 
@@ -86,6 +96,12 @@ After This restart Home Assistant and the Entities should be present.
    - zone2FlowTemperature (getVAR_IN_TEMP_WATER_OUTLET_ZONE2_F)
    - roomTemperature (getVAR_in_temp_room_f)
    - roomTargetTemperature (getVAR_in_temp_target_f)
+   - heatingCurveOutTempMax (getVAR_IN_FSV_2011)
+   - heatingCurveOutTempMin (getVAR_IN_FSV_2012)
+   - heatingCurveUFHMax (getVAR_IN_FSV_2021)
+   - heatingCurveUFHMin (getVAR_IN_FSV_2022)
+   - heatingCurveFCUMax (getVAR_IN_FSV_2032)
+   - heatingCurveFCUMin (getVAR_IN_FSV_2032)
 - added Autostart config in Dockerfile
 - added Homeassistent MQQT Entity definitions
  

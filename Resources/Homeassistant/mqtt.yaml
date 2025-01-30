@@ -221,13 +221,15 @@ sensor:
     unit_of_measurement: kW
     state_class: measurement
     device_class: power
+
+  #v0.2.0 
   - name: Samsung Mono HT Quit - threeWayValve2
     state_topic: ehsMonitor/samsung/threeWayValve2
     unique_id: samsung_mono_ht_quit_threeWayValve2
   - name: Samsung Mono HT Quit - Zone 1 Power Status
     state_topic: ehsMonitor/samsung/zone1PowerStatus
     unique_id: samsung_mono_ht_quit_zone1PowerStatus
-  - name: Samsung Mono HT Quit - Zione 2 Power Status
+  - name: Samsung Mono HT Quit - Zone 2 Power Status
     state_topic: ehsMonitor/samsung/zone2PowerStatus
     unique_id: samsung_mono_ht_quit_zone2PowerStatus
   - name: Samsung Mono HT Quit - Zone 2 Temperatur
@@ -269,6 +271,42 @@ sensor:
   - name: Samsung Mono HT Quit - Room Target Temperature
     state_topic: ehsMonitor/samsung/roomTargetTemperature
     unique_id: samsung_mono_ht_quit_roomTargetTemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - FSV_2011 Heating Curve Outdoor Max Temp
+    state_topic: ehsMonitor/samsung/heatingCurveOutTempMax
+    unique_id: samsung_mono_ht_quit_heatingCurveOutTempMax
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - FSV_2012 Heating Curve Outdoor Min Temp
+    state_topic: ehsMonitor/samsung/heatingCurveOutTempMin
+    unique_id: samsung_mono_ht_quit_heatingCurveOutTempMin
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - FSV_2021 Heating Curve UFH Max Temp
+    state_topic: ehsMonitor/samsung/heatingCurveUFHMax
+    unique_id: samsung_mono_ht_quit_heatingCurveUFHMax
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - FSV_2022 Heating Curve UFH Min Temp
+    state_topic: ehsMonitor/samsung/heatingCurveUFHMin
+    unique_id: samsung_mono_ht_quit_heatingCurveUFHMin
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - FSV_2031 Heating Curve FCU Max Temp
+    state_topic: ehsMonitor/samsung/heatingCurveFCUMax
+    unique_id: samsung_mono_ht_quit_heatingCurveFCUMax
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - FSV_2031 Heating Curve FCU Max Temp
+    state_topic: ehsMonitor/samsung/heatingCurveFCUMin
+    unique_id: samsung_mono_ht_quit_heatingCurveFCUMin
     unit_of_measurement: °C
     state_class: measurement
     device_class: temperature

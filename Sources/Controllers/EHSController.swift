@@ -34,6 +34,13 @@ final class EHSController
 
     @Measurement public private(set) var roomTemperature: Double?
     @Measurement public private(set) var roomTargetTemperature: Double?
+
+    @Measurement public private(set) var heatingCurveOutTempMax: Double?
+    @Measurement public private(set) var heatingCurveOutTempMin: Double?
+    @Measurement public private(set) var heatingCurveUFHMax: Double?
+    @Measurement public private(set) var heatingCurveUFHMin: Double?
+    @Measurement public private(set) var heatingCurveFCUMax: Double?
+    @Measurement public private(set) var heatingCurveFCUMin: Double?
     
     @Measurement public private(set) var outdoorTemperature: Double?
     @Measurement public private(set) var highPressure: Double?
@@ -109,6 +116,12 @@ final class EHSController
         self._zone2FlowTemperature = .init(mqtt: .init(controller: mqttController, topic: "samsung/zone2FlowTemperature"))
         self._roomTemperature = .init(mqtt: .init(controller: mqttController, topic: "samsung/roomTemperature"))
         self._roomTargetTemperature = .init(mqtt: .init(controller: mqttController, topic: "samsung/roomTargetTemperature"))
+        self._heatingCurveOutTempMax = .init(mqtt: .init(controller: mqttController, topic: "samsung/heatingCurveOutTempMax"))
+        self._heatingCurveOutTempMin = .init(mqtt: .init(controller: mqttController, topic: "samsung/heatingCurveOutTempMin"))
+        self._heatingCurveUFHMax = .init(mqtt: .init(controller: mqttController, topic: "samsung/heatingCurveUFHMax"))
+        self._heatingCurveUFHMin = .init(mqtt: .init(controller: mqttController, topic: "samsung/heatingCurveUFHMin"))
+        self._heatingCurveFCUMax = .init(mqtt: .init(controller: mqttController, topic: "samsung/heatingCurveFCUMax"))
+        self._heatingCurveFCUMin = .init(mqtt: .init(controller: mqttController, topic: "samsung/heatingCurveFCUMin"))
         self._compressorOrderFrequency = .init(mqtt: .init(controller: mqttController, topic: "samsung/compressorOrderFreq"))
         self._compressorTargetFrequency = .init(mqtt: .init(controller: mqttController, topic: "samsung/compressorTargetFreq"))
         self._compressorCurrentFrequency = .init(mqtt: .init(controller: mqttController, topic: "samsung/compressorCurrentFreq"))
@@ -291,6 +304,42 @@ final class EHSController
         {
             logger.trace("Room Target Temperature [°C]: \(roomTargetTemperature)")
             self.roomTargetTemperature = roomTargetTemperature
+        }
+
+        if let heatingCurveOutTempMax = packet.messages.getVAR_IN_FSV_2011()
+        {
+            logger.trace("FSV_2011 Heating Curve Outdoor Max Temp [°C]: \(heatingCurveOutTempMax)")
+            self.heatingCurveOutTempMax = heatingCurveOutTempMax
+        }
+
+        if let heatingCurveOutTempMin = packet.messages.getVAR_IN_FSV_2012()
+        {
+            logger.trace("FSV_2012 Heating Curve Outdoor Min Temp [°C]: \(heatingCurveOutTempMin)")
+            self.heatingCurveOutTempMin = heatingCurveOutTempMin
+        }
+
+        if let heatingCurveUFHMax = packet.messages.getVAR_IN_FSV_2021()
+        {
+            logger.trace("FSV_2021 Heating Curve UFH Max Temp [°C]: \(heatingCurveUFHMax)")
+            self.heatingCurveUFHMax = heatingCurveUFHMax
+        }
+
+        if let heatingCurveUFHMin = packet.messages.getVAR_IN_FSV_2022()
+        {
+            logger.trace("FSV_2022 Heating Curve UFH Min Temp [°C]: \(heatingCurveUFHMin)")
+            self.heatingCurveUFHMin = heatingCurveUFHMin
+        }
+
+        if let heatingCurveFCUMax = packet.messages.getVAR_IN_FSV_2032()
+        {
+            logger.trace("FSV_2031 Heating Curve FCU Max Temp [°C]: \(heatingCurveFCUMax)")
+            self.heatingCurveFCUMax = heatingCurveFCUMax
+        }
+
+        if let heatingCurveFCUMin = packet.messages.getVAR_IN_FSV_2032()
+        {
+            logger.trace("FSV_2031 Heating Curve FCU Max Temp [°C]: \(heatingCurveFCUMin)")
+            self.heatingCurveFCUMin = heatingCurveFCUMin
         }
 
         if let zone2TargetTemperature = packet.messages.getVAR_IN_TEMP_TARGET_ZONE2_F()
