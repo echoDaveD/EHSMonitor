@@ -18,3 +18,6 @@ WORKDIR /app/EHSMonitor
 
 # Run swift build to build the project
 RUN swift build
+
+# Autostart EHSMonitor on COntainer start
+CMD [".build/debug/EHSMonitor", "--config", "/media/persistvol/Configuration.json"]

@@ -1,0 +1,291 @@
+sensor:
+  - name: Samsung Mono HT Quit - baseHeaterStatus
+    state_topic: ehsMonitor/samsung/baseHeaterStatus
+    unique_id: samsung_mono_ht_quit_baseheaterstatus
+  - name: Samsung Mono HT Quit - compressorCurrentFreq
+    state_topic: ehsMonitor/samsung/compressorCurrentFreq
+    unique_id: samsung_mono_ht_quit_compressorcurrentfreq
+    unit_of_measurement: Hz
+    state_class: measurement
+    device_class: frequency
+  - name: Samsung Mono HT Quit - compressorOct1
+    state_topic: ehsMonitor/samsung/compressorOct1
+    unique_id: samsung_mono_ht_quit_compressoroct1
+  - name: Samsung Mono HT Quit - compressorOrderFreq
+    state_topic: ehsMonitor/samsung/compressorOrderFreq
+    unique_id: samsung_mono_ht_quit_compressororderfreq
+    unit_of_measurement: Hz
+    state_class: measurement
+    device_class: frequency
+  - name: Samsung Mono HT Quit - compressorStatus
+    state_topic: ehsMonitor/samsung/compressorStatus
+    unique_id: samsung_mono_ht_quit_compressorstatus
+  - name: Samsung Mono HT Quit - compressorTargetFreq
+    state_topic: ehsMonitor/samsung/compressorTargetFreq
+    unique_id: samsung_mono_ht_quit_compressortargetfreq
+    unit_of_measurement: Hz
+    state_class: measurement
+    device_class: frequency
+  - name: Samsung Mono HT Quit - compressorTopTemperature
+    state_topic: ehsMonitor/samsung/compressorTopTemperature
+    unique_id: samsung_mono_ht_quit_compressortoptemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - condensatorOutTemperature
+    state_topic: ehsMonitor/samsung/condensatorOutTemperature
+    unique_id: samsung_mono_ht_quit_condensatorouttemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - defrostStatus
+    state_topic: ehsMonitor/samsung/defrostStatus
+    unique_id: samsung_mono_ht_quit_defroststatus
+  - name: Samsung Mono HT Quit - dhwTemperature
+    state_topic: ehsMonitor/samsung/dhwTemperature
+    unique_id: samsung_mono_ht_quit_dhwtemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - dischargeTemperature
+    state_topic: ehsMonitor/samsung/dischargeTemperature
+    unique_id: samsung_mono_ht_quit_dischargetemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - dshTemperature
+    state_topic: ehsMonitor/samsung/dshTemperature
+    unique_id: samsung_mono_ht_quit_dshtemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - errorCode
+    state_topic: ehsMonitor/samsung/errorCode
+    unique_id: samsung_mono_ht_quit_errorcode
+  - name: Samsung Mono HT Quit - evaInTemperature
+    state_topic: ehsMonitor/samsung/evaInTemperature
+    unique_id: samsung_mono_ht_quit_evaintemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - eviBypassStatus
+    state_topic: ehsMonitor/samsung/eviBypassStatus
+    unique_id: samsung_mono_ht_quit_evibypassstatus
+  - name: Samsung Mono HT Quit - eviEEV
+    state_topic: ehsMonitor/samsung/eviEEV
+    unique_id: samsung_mono_ht_quit_evieev
+  - name: Samsung Mono HT Quit - eviInTemperature
+    state_topic: ehsMonitor/samsung/eviInTemperature
+    unique_id: samsung_mono_ht_quit_eviintemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - eviOutTemperature
+    state_topic: ehsMonitor/samsung/eviOutTemperature
+    unique_id: samsung_mono_ht_quit_eviouttemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - eviSolEEV
+    state_topic: ehsMonitor/samsung/eviSolEEV
+    unique_id: samsung_mono_ht_quit_evisoleev
+  - name: Samsung Mono HT Quit - flowTemperature
+    state_topic: ehsMonitor/samsung/flowTemperature
+    unique_id: samsung_mono_ht_quit_flowtemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - fourWayValveStatus
+    state_topic: ehsMonitor/samsung/fourWayValveStatus
+    unique_id: samsung_mono_ht_quit_fourwayvalvestatus
+  - name: Samsung Mono HT Quit - heatOutput
+    state_topic: ehsMonitor/samsung/heatOutput
+    unique_id: samsung_mono_ht_quit_heatoutput
+  - name: Samsung Mono HT Quit - highPressure
+    state_topic: ehsMonitor/samsung/highPressure
+    unique_id: samsung_mono_ht_quit_highpressure
+    unit_of_measurement: kgf/m2
+    state_class: measurement
+    device_class: pressure
+  - name: Samsung Mono HT Quit - highPressureSaturationTemperature
+    state_topic: ehsMonitor/samsung/highPressureSaturationTemperature
+    unique_id: samsung_mono_ht_quit_highpressuresaturationtemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - hotGasStatus
+    state_topic: ehsMonitor/samsung/hotGasStatus
+    unique_id: samsung_mono_ht_quit_hotgasstatus
+  - name: Samsung Mono HT Quit - inverterTemperature
+    state_topic: ehsMonitor/samsung/inverterTemperature
+    unique_id: samsung_mono_ht_quit_invertertemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - liquidTubeTemperature
+    state_topic: ehsMonitor/samsung/liquidTubeTemperature
+    unique_id: samsung_mono_ht_quit_liquidtubetemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - liquidValveStatus
+    state_topic: ehsMonitor/samsung/liquidValveStatus
+    unique_id: samsung_mono_ht_quit_liquidvalvestatus
+  - name: Samsung Mono HT Quit - lowPressure
+    state_topic: ehsMonitor/samsung/lowPressure
+    unique_id: samsung_mono_ht_quit_lowpressure
+    unit_of_measurement: kgf/m2
+    state_class: measurement
+    device_class: pressure
+  - name: Samsung Mono HT Quit - lowPressureSaturationTemperature
+    state_topic: ehsMonitor/samsung/lowPressureSaturationTemperature
+    unique_id: samsung_mono_ht_quit_lowpressuresaturationtemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - mainEEV
+    state_topic: ehsMonitor/samsung/mainEEV
+    unique_id: samsung_mono_ht_quit_maineev
+  - name: Samsung Mono HT Quit - mcuHRBypassEEV
+    state_topic: ehsMonitor/samsung/mcuHRBypassEEV
+    unique_id: samsung_mono_ht_quit_mcuhrbypasseev
+  - name: Samsung Mono HT Quit - operationMode
+    state_topic: ehsMonitor/samsung/operationMode
+    unique_id: samsung_mono_ht_quit_operationmode
+  - name: Samsung Mono HT Quit - outdoorFanRPM
+    state_topic: ehsMonitor/samsung/outdoorFanRPM
+    unique_id: samsung_mono_ht_quit_outdoorfanrpm
+    unit_of_measurement: rpm
+    state_class: measurement
+    device_class: frequency
+  - name: Samsung Mono HT Quit - outdoorTemp
+    state_topic: ehsMonitor/samsung/outdoorTemp
+    unique_id: samsung_mono_ht_quit_outdoortemp
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - pheHeaterStatus
+    state_topic: ehsMonitor/samsung/pheHeaterStatus
+    unique_id: samsung_mono_ht_quit_pheheaterstatus
+  - name: Samsung Mono HT Quit - pwm
+    state_topic: ehsMonitor/samsung/pwm
+    unique_id: samsung_mono_ht_quit_pwm
+  - name: Samsung Mono HT Quit - returnTemperature
+    state_topic: ehsMonitor/samsung/returnTemperature
+    unique_id: samsung_mono_ht_quit_returntemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - suction2_1secTemperature
+    state_topic: ehsMonitor/samsung/suction2_1secTemperature
+    unique_id: samsung_mono_ht_quit_suction2_1sectemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - suctionTemperature
+    state_topic: ehsMonitor/samsung/suctionTemperature
+    unique_id: samsung_mono_ht_quit_suctiontemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - targetDHWTemperature
+    state_topic: ehsMonitor/samsung/targetDHWTemperature
+    unique_id: samsung_mono_ht_quit_targetdhwtemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - targetFlowTemperature
+    state_topic: ehsMonitor/samsung/targetFlowTemperature
+    unique_id: samsung_mono_ht_quit_targetflowtemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - threeWayValve
+    state_topic: ehsMonitor/samsung/threeWayValve
+    unique_id: samsung_mono_ht_quit_threewayvalve
+  - name: Samsung Mono HT Quit - waterFlowRate
+    state_topic: ehsMonitor/samsung/waterFlowRate
+    unique_id: samsung_mono_ht_quit_waterflowrate
+    unit_of_measurement: L/min
+    state_class: measurement
+    device_class: volume_flow_rate
+  - name: Samsung Mono HT Quit - capacity absolute
+    state_topic: ehsMonitor/samsung/capacity/absolute
+    unique_id: samsung_mono_ht_quit_capacity_absolute
+    unit_of_measurement: kW
+    state_class: measurement
+    device_class: power
+  - name: Samsung Mono HT Quit - capacity request
+    state_topic: ehsMonitor/samsung/capacity/request
+    unique_id: samsung_mono_ht_quit_capacity_request
+    unit_of_measurement: kW
+    state_class: measurement
+    device_class: power
+  - name: Samsung Mono HT Quit - threeWayValve2
+    state_topic: ehsMonitor/samsung/threeWayValve2
+    unique_id: samsung_mono_ht_quit_threeWayValve2
+  - name: Samsung Mono HT Quit - Zone 1 Power Status
+    state_topic: ehsMonitor/samsung/zone1PowerStatus
+    unique_id: samsung_mono_ht_quit_zone1PowerStatus
+  - name: Samsung Mono HT Quit - Zione 2 Power Status
+    state_topic: ehsMonitor/samsung/zone2PowerStatus
+    unique_id: samsung_mono_ht_quit_zone2PowerStatus
+  - name: Samsung Mono HT Quit - Zone 2 Temperatur
+    state_topic: ehsMonitor/samsung/zone2Temperatur
+    unique_id: samsung_mono_ht_quit_zone2Temperatur
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - Zone 2 Target Temperature
+    state_topic: ehsMonitor/samsung/zone2TargetTemperature
+    unique_id: samsung_mono_ht_quit_zone2TargetTemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - Zone 2 Target Water Flow Temperature
+    state_topic: ehsMonitor/samsung/zone2TargetTemperature
+    unique_id: samsung_mono_ht_quit_zone2TargetTemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - Zone 1 Water Flow Temperature
+    state_topic: ehsMonitor/samsung/zone1FlowTemperature
+    unique_id: samsung_mono_ht_quit_zone1FlowTemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - Zone 2 Water Flow Temperature
+    state_topic: ehsMonitor/samsung/zone2FlowTemperature
+    unique_id: samsung_mono_ht_quit_zone2FlowTemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - Room Temperature
+    state_topic: ehsMonitor/samsung/roomTemperature
+    unique_id: samsung_mono_ht_quit_roomTemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - Room Target Temperature
+    state_topic: ehsMonitor/samsung/roomTargetTemperature
+    unique_id: samsung_mono_ht_quit_roomTargetTemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+
+
+# https://github.com/home-assistant/core/blob/master/homeassistant/const.py
+# list of valid device Classes
+# 'date', 'enum', 'timestamp', 'apparent_power', 
+# 'aqi', 'area', 'atmospheric_pressure', 'battery', 
+# 'blood_glucose_concentration', 'carbon_monoxide', 
+# 'carbon_dioxide', 'conductivity', 'current', 'data_rate', 
+# 'data_size', 'distance', 'duration', 'energy', 'energy_storage', 
+# 'frequency', 'gas', 'humidity', 'illuminance', 'irradiance', 'moisture', 
+# 'monetary', 'nitrogen_dioxide', 'nitrogen_monoxide', 'nitrous_oxide', 
+# 'ozone', 'ph', 'pm1', 'pm10', 'pm25', 'power_factor', 'power', 
+# 'precipitation', 'precipitation_intensity', 'pressure', 
+# 'reactive_power', 'signal_strength', 'sound_pressure', 
+# 'speed', 'sulphur_dioxide', 'temperature', 'volatile_organic_compounds', 
+# 'volatile_organic_compounds_parts', 'voltage', 'volume', 'volume_storage', 
+# 'volume_flow_rate', 'water', 'weight', 'wind_speed'.

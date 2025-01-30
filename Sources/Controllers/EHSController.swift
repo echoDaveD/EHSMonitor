@@ -23,6 +23,17 @@ final class EHSController
     @Measurement public private(set) var compressorOrderFrequency: Int?
     @Measurement public private(set) var compressorTargetFrequency: Int?
     @Measurement public private(set) var compressorCurrentFrequency: Int?
+
+    @Measurement public private(set) var zone1PowerStatus: ZonePowerState?
+    @Measurement public private(set) var zone2PowerStatus: ZonePowerState?
+    @Measurement public private(set) var zone2Temperature: Double?
+    @Measurement public private(set) var zone2TargetTemperature: Double?
+    @Measurement public private(set) var zone2TargetFlowTemperature: Double?
+    @Measurement public private(set) var zone1FlowTemperature: Double?
+    @Measurement public private(set) var zone2FlowTemperature: Double?
+
+    @Measurement public private(set) var roomTemperature: Double?
+    @Measurement public private(set) var roomTargetTemperature: Double?
     
     @Measurement public private(set) var outdoorTemperature: Double?
     @Measurement public private(set) var highPressure: Double?
@@ -56,6 +67,7 @@ final class EHSController
     }
     @Measurement public private(set) var pwmPercentage: UInt8?
     @Measurement public private(set) var threeWayValvePosition: ThreeWayValvePosition?
+    @Measurement public private(set) var threeWayValve2Position: ThreeWayValve2Position?
     @Measurement public private(set) var capacityRequest: Double?
     @Measurement public private(set) var capacityAbsolute: Double?
     @Measurement public private(set) var centralHeatingStatus: CentralHeatingStatus?
@@ -88,6 +100,15 @@ final class EHSController
         self._fourWayValveStatus = .init(mqtt: .init(controller: mqttController, topic: "samsung/fourWayValveStatus"))
         self._baseHeaterStatus = .init(mqtt: .init(controller: mqttController, topic: "samsung/baseHeaterStatus"))
         self._pheHeaterStatus = .init(mqtt: .init(controller: mqttController, topic: "samsung/pheHeaterStatus"))
+        self._zone1PowerStatus = .init(mqtt: .init(controller: mqttController, topic: "samsung/zone1PowerStatus"))
+        self._zone2PowerStatus = .init(mqtt: .init(controller: mqttController, topic: "samsung/zone2PowerStatus"))
+        self._zone2Temperature = .init(mqtt: .init(controller: mqttController, topic: "samsung/zone2Temperature"))
+        self._zone2TargetTemperature = .init(mqtt: .init(controller: mqttController, topic: "samsung/zone2TargetTemperature"))
+        self._zone2TargetFlowTemperature = .init(mqtt: .init(controller: mqttController, topic: "samsung/zone2TargetFlowTemperature"))
+        self._zone1FlowTemperature = .init(mqtt: .init(controller: mqttController, topic: "samsung/zone1FlowTemperature"))
+        self._zone2FlowTemperature = .init(mqtt: .init(controller: mqttController, topic: "samsung/zone2FlowTemperature"))
+        self._roomTemperature = .init(mqtt: .init(controller: mqttController, topic: "samsung/roomTemperature"))
+        self._roomTargetTemperature = .init(mqtt: .init(controller: mqttController, topic: "samsung/roomTargetTemperature"))
         self._compressorOrderFrequency = .init(mqtt: .init(controller: mqttController, topic: "samsung/compressorOrderFreq"))
         self._compressorTargetFrequency = .init(mqtt: .init(controller: mqttController, topic: "samsung/compressorTargetFreq"))
         self._compressorCurrentFrequency = .init(mqtt: .init(controller: mqttController, topic: "samsung/compressorCurrentFreq"))
@@ -117,6 +138,7 @@ final class EHSController
         self._waterFlowRate = .init(validity: 60, mqtt: .init(controller: mqttController, topic: "samsung/waterFlowRate"))
         self._pwmPercentage = .init(validity: 6*60+10, mqtt: .init(controller: mqttController, topic: "samsung/pwm"))
         self._threeWayValvePosition = .init(validity: 6*60+10, mqtt: .init(controller: mqttController, topic: "samsung/threeWayValve", transform: { "\($0.rawValue)" }))
+        self._threeWayValve2Position = .init(validity: 6*60+10, mqtt: .init(controller: mqttController, topic: "samsung/threeWayValve2", transform: { "\($0.rawValue)" }))
         self._capacityRequest = .init(validity: 6*60+10, mqtt: .init(controller: mqttController, topic: "samsung/capacity/request"))
         self._capacityAbsolute = .init(validity: 6*60+10, mqtt: .init(controller: mqttController, topic: "samsung/capacity/absolute"))
         self._centralHeatingStatus = .init(validity: 6*60+10, mqtt: .init(controller: mqttController, topic: "samsung/centralHeatingStatus"))
@@ -221,6 +243,62 @@ final class EHSController
             self.pheHeaterStatus = pheHeaterStatus
         }
         
+        if let zone1PowerStatusRaw = packet.messages.getENUM_IN_OPERATION_POWER_ZONE1()
+        {
+            let zone1PowerStatus: ZonePowerState = zone1PowerStatusRaw ? .on : .off
+            logger.trace("ZONE 1 Power Status: \(zone1PowerStatus)")
+            self.zone1PowerStatus = zone1PowerStatus
+        }
+
+        if let zone2PowerStatusRaw = packet.messages.getENUM_IN_OPERATION_POWER_ZONE2()
+        {
+            let zone2PowerStatus: ZonePowerState = zone2PowerStatusRaw ? .on : .off
+            logger.trace("ZONE 2 Power Status: \(zone2PowerStatus)")
+            self.zone2PowerStatus = zone2PowerStatus
+        }
+
+        if let zone2Temperature = packet.messages.getVAR_IN_TEMP_ZONE2_F()
+        {
+            logger.trace("Zone 2 In Temperature [°C]: \(zone2Temperature)")
+            self.zone2Temperature = zone2Temperature
+        }
+
+        if let zone2TargetFlowTemperature = packet.messages.getVAR_IN_TEMP_WATER_OUTLET_TARGET_ZONE2_F()
+        {
+            logger.trace("Zone 2 Target Water Flow Temperature [°C]: \(zone2TargetFlowTemperature)")
+            self.zone2TargetFlowTemperature = zone2TargetFlowTemperature
+        }
+
+        if let zone1FlowTemperature = packet.messages.getVAR_IN_TEMP_WATER_OUTLET_ZONE1_F()
+        {
+            logger.trace("Zone 1 Water Flow Temperature [°C]: \(zone1FlowTemperature)")
+            self.zone1FlowTemperature = zone1FlowTemperature
+        }
+
+        if let zone2FlowTemperature = packet.messages.getVAR_IN_TEMP_WATER_OUTLET_ZONE2_F()
+        {
+            logger.trace("Zone 2 Water Flow Temperature [°C]: \(zone2FlowTemperature)")
+            self.zone2FlowTemperature = zone2FlowTemperature
+        }
+
+        if let roomTemperature = packet.messages.getVAR_in_temp_room_f()
+        {
+            logger.trace("Room Temperature [°C]: \(roomTemperature)")
+            self.roomTemperature = roomTemperature
+        }
+
+        if let roomTargetTemperature = packet.messages.getVAR_in_temp_target_f()
+        {
+            logger.trace("Room Target Temperature [°C]: \(roomTargetTemperature)")
+            self.roomTargetTemperature = roomTargetTemperature
+        }
+
+        if let zone2TargetTemperature = packet.messages.getVAR_IN_TEMP_TARGET_ZONE2_F()
+        {
+            logger.trace("Zone 2 Target Temperature [°C]: \(zone2TargetTemperature)")
+            self.zone2TargetTemperature = zone2TargetTemperature
+        }
+
         if let outdoorTemp = packet.messages.getVAR_out_sensor_airout()
         {
             logger.trace("Outdoor Temperature [°C]: \(outdoorTemp)")
@@ -424,6 +502,18 @@ final class EHSController
             logger.trace("ThreeWayValvePosition: \(threeWayValvePosition)")
             self.threeWayValvePosition = threeWayValvePosition
         }
+
+        if let threeWayValve2PositionRaw = packet.messages.getENUM_IN_3WAY_VALVE_2()
+        {
+            let threeWayValve2Position: ThreeWayValve2Position = switch threeWayValve2PositionRaw {
+            case .Room:
+                .centralHeating
+            case .Tank:
+                .dhw
+            }
+            logger.trace("ThreeWayValve2Position: \(threeWayValve2Position)")
+            self.threeWayValve2Position = threeWayValve2Position
+        }
         
         if let capacityRequest = packet.messages.getVAR_in_capacity_request()
         {
@@ -596,9 +686,19 @@ extension EHSController
         case on = 1
     }
     
-    
+    enum ZonePowerState: UInt16
+    {
+        case off = 0
+        case on = 1
+    }    
     
     enum ThreeWayValvePosition: UInt16
+    {
+        case centralHeating = 0
+        case dhw = 1
+    }
+
+    enum ThreeWayValve2Position: UInt16
     {
         case centralHeating = 0
         case dhw = 1
