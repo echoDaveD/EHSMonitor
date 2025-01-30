@@ -197,7 +197,8 @@ final class EHSController
             break
         default:
             // ignore all packets that are not coming from outdoor or indoor unit
-            return
+            //return
+            break
         }
         
         if let operationModeRaw = packet.messages.getENUM_out_operation_odu_mode(),
@@ -308,36 +309,42 @@ final class EHSController
 
         if let heatingCurveOutTempMax = packet.messages.getVAR_IN_FSV_2011()
         {
+            logger.info("packet.source.class: \(packet.source.class)")
             logger.trace("FSV_2011 Heating Curve Outdoor Max Temp [°C]: \(heatingCurveOutTempMax)")
             self.heatingCurveOutTempMax = heatingCurveOutTempMax
         }
 
         if let heatingCurveOutTempMin = packet.messages.getVAR_IN_FSV_2012()
         {
+            logger.info("packet.source.class: \(packet.source.class)")
             logger.trace("FSV_2012 Heating Curve Outdoor Min Temp [°C]: \(heatingCurveOutTempMin)")
             self.heatingCurveOutTempMin = heatingCurveOutTempMin
         }
 
         if let heatingCurveUFHMax = packet.messages.getVAR_IN_FSV_2021()
         {
+            logger.info("packet.source.class: \(packet.source.class)")
             logger.trace("FSV_2021 Heating Curve UFH Max Temp [°C]: \(heatingCurveUFHMax)")
             self.heatingCurveUFHMax = heatingCurveUFHMax
         }
 
         if let heatingCurveUFHMin = packet.messages.getVAR_IN_FSV_2022()
         {
+            logger.info("packet.source.class: \(packet.source.class)")
             logger.trace("FSV_2022 Heating Curve UFH Min Temp [°C]: \(heatingCurveUFHMin)")
             self.heatingCurveUFHMin = heatingCurveUFHMin
         }
 
         if let heatingCurveFCUMax = packet.messages.getVAR_IN_FSV_2032()
         {
+            logger.info("packet.source.class: \(packet.source.class)")
             logger.trace("FSV_2031 Heating Curve FCU Max Temp [°C]: \(heatingCurveFCUMax)")
             self.heatingCurveFCUMax = heatingCurveFCUMax
         }
 
         if let heatingCurveFCUMin = packet.messages.getVAR_IN_FSV_2032()
         {
+            logger.info("packet.source.class: \(packet.source.class)")
             logger.trace("FSV_2031 Heating Curve FCU Max Temp [°C]: \(heatingCurveFCUMin)")
             self.heatingCurveFCUMin = heatingCurveFCUMin
         }
