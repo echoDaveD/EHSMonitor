@@ -12,7 +12,7 @@ WORKDIR /app
 
 # Clone the GitHub repository
 #RUN git clone https://github.com/betaphi/EHSMonitor.git
-RUN git clone  --single-branch --branch feature/zone_enums_docker_autostart https://github.com/echoDaveD/EHSMonitor.git && cd EHSMonitor && git checkout feature/zone_enums_docker_autostart
+RUN git clone https://github.com/echoDaveD/EHSMonitor.git && cd EHSMonitor && git checkout feature/zone_enums_docker_autostart
 
 # Change directory into the cloned repository
 WORKDIR /app/EHSMonitor
