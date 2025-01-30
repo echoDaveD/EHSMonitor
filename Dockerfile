@@ -11,7 +11,10 @@ RUN apt update && apt install -y \
 WORKDIR /app
 
 # Clone the GitHub repository
-RUN git clone https://github.com/betaphi/EHSMonitor.git
+#RUN git clone https://github.com/betaphi/EHSMonitor.git
+RUN git clone https://github.com/echoDaveD/EHSMonitor.git
+RUN git checkout feature/zone_enums_docker_autostart
+
 
 # Change directory into the cloned repository
 WORKDIR /app/EHSMonitor

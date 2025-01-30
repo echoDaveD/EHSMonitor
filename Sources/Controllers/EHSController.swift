@@ -193,7 +193,7 @@ final class EHSController
     {
         switch packet.source.class
         {
-        case .outdoor, .indoor, .wiredRemote, .wifiKit, .htu, .erv:
+        case .outdoor, .indoor:
             break
         default:
             // ignore all packets that are not coming from outdoor or indoor unit
