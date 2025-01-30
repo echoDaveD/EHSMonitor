@@ -191,6 +191,7 @@ final class EHSController
     // MARK: - Refresh Methods
     private func process(packet: Packet) async throws
     {
+        logger.info("Processing packet.source.class: \(packet.source.class)")
         switch packet.source.class
         {
         case .outdoor, .indoor, .htu, .erv, .diffuser, .mcu, .rmc, .wiredRemote:
