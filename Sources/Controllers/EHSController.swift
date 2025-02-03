@@ -289,14 +289,21 @@ final class EHSController
             self.zone2FlowTemperature = zone2FlowTemperature
         }
 
-        if let waterlawSensor = packet.messages.getENUM_IN_CHILLER_WATERLAW_SENSOR()
+        if let waterlawSensorRaw = packet.messages.getENUM_IN_CHILLER_WATERLAW_SENSOR()
         {
+            let waterlawSensor: WaterLawSensorState = switch waterlawSensorRaw {
+            case .Outdoor:
+                .outdoor
+            case .Room:
+                .room
+            }
             logger.trace("WaterLaw Sensor: \(waterlawSensor)")
             self.waterlawSensor = waterlawSensor
         }
 
-        if let waterlawStatus = packet.messages.getENUM_IN_CHILLER_WATERLAW_ON_OFF()
+        if let waterlawStatusRaw = packet.messages.getENUM_IN_CHILLER_WATERLAW_ON_OFF()
         {
+            let waterlawStatus: WaterLawState = waterlawStatusRaw ? .on : .off
             logger.trace("Water Law Status [°C]: \(waterlawStatus)")
             self.waterlawStatus = waterlawStatus
         }
@@ -717,6 +724,18 @@ extension EHSController
         case off = 0
         case on = 1
     }    
+
+    enum WaterLawSensorState: UInt16
+    {
+        case outdoor = 0
+        case room = 1
+    } 
+
+    enum WaterLawState: UInt16
+    {
+        case off = 0
+        case on = 1
+    } 
     
     enum ThreeWayValvePosition: UInt16
     {
