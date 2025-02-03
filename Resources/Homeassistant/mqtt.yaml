@@ -233,8 +233,8 @@ sensor:
     state_topic: ehsMonitor/samsung/zone2PowerStatus
     unique_id: samsung_mono_ht_quit_zone2PowerStatus
   - name: Samsung Mono HT Quit - Zone 2 Temperatur
-    state_topic: ehsMonitor/samsung/zone2Temperatur
-    unique_id: samsung_mono_ht_quit_zone2Temperatur
+    state_topic: ehsMonitor/samsung/zone2Temperature
+    unique_id: samsung_mono_ht_quit_zone2Temperature
     unit_of_measurement: °C
     state_class: measurement
     device_class: temperature
@@ -245,8 +245,8 @@ sensor:
     state_class: measurement
     device_class: temperature
   - name: Samsung Mono HT Quit - Zone 2 Target Water Flow Temperature
-    state_topic: ehsMonitor/samsung/zone2TargetTemperature
-    unique_id: samsung_mono_ht_quit_zone2TargetTemperature
+    state_topic: ehsMonitor/samsung/zone2TargetFlowTemperature
+    unique_id: samsung_mono_ht_quit_zone2TargetFlowTemperature
     unit_of_measurement: °C
     state_class: measurement
     device_class: temperature
@@ -271,6 +271,18 @@ sensor:
   - name: Samsung Mono HT Quit - Room Target Temperature
     state_topic: ehsMonitor/samsung/roomTargetTemperature
     unique_id: samsung_mono_ht_quit_roomTargetTemperature
+    unit_of_measurement: °C
+    state_class: measurement
+    device_class: temperature
+  - name: Samsung Mono HT Quit - Water Law Sensor
+    state_topic: ehsMonitor/samsung/waterlawSensor
+    unique_id: samsung_mono_ht_quit_waterlawSensor
+  - name: Samsung Mono HT Quit - Water Law Status
+    state_topic: ehsMonitor/samsung/waterlawStatus
+    unique_id: samsung_mono_ht_quit_waterlawStatus
+  - name: Samsung Mono HT Quit - Water Law Temperature
+    state_topic: ehsMonitor/samsung/waterlawTemperature
+    unique_id: samsung_mono_ht_quit_waterlawTemperature
     unit_of_measurement: °C
     state_class: measurement
     device_class: temperature

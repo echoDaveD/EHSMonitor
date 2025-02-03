@@ -32,6 +32,10 @@ final class EHSController
     @Measurement public private(set) var zone1FlowTemperature: Double?
     @Measurement public private(set) var zone2FlowTemperature: Double?
 
+    @Measurement public private(set) var waterlawSensor: WaterLawSensorState?
+    @Measurement public private(set) var waterlawStatus: WaterLawState?
+    @Measurement public private(set) var waterlawTemperature: Double?
+
     @Measurement public private(set) var roomTemperature: Double?
     @Measurement public private(set) var roomTargetTemperature: Double?
     
@@ -107,6 +111,9 @@ final class EHSController
         self._zone2TargetFlowTemperature = .init(mqtt: .init(controller: mqttController, topic: "samsung/zone2TargetFlowTemperature"))
         self._zone1FlowTemperature = .init(mqtt: .init(controller: mqttController, topic: "samsung/zone1FlowTemperature"))
         self._zone2FlowTemperature = .init(mqtt: .init(controller: mqttController, topic: "samsung/zone2FlowTemperature"))
+        self._waterlawSensor = .init(mqtt: .init(controller: mqttController, topic: "samsung/waterlawSensor"))
+        self._waterlawStatus = .init(mqtt: .init(controller: mqttController, topic: "samsung/waterlawStatus"))
+        self._waterlawTemperature = .init(mqtt: .init(controller: mqttController, topic: "samsung/waterlawTemperature"))
         self._roomTemperature = .init(mqtt: .init(controller: mqttController, topic: "samsung/roomTemperature"))
         self._roomTargetTemperature = .init(mqtt: .init(controller: mqttController, topic: "samsung/roomTargetTemperature"))
         self._compressorOrderFrequency = .init(mqtt: .init(controller: mqttController, topic: "samsung/compressorOrderFreq"))
@@ -278,8 +285,26 @@ final class EHSController
 
         if let zone2FlowTemperature = packet.messages.getVAR_IN_TEMP_WATER_OUTLET_ZONE2_F()
         {
-            logger.trace("Zone 2 Water Flow Temperature [°C]: \(zone2FlowTemperature)")
+            logger.trace("Zone 2 Water Flow Temperature: \(zone2FlowTemperature)")
             self.zone2FlowTemperature = zone2FlowTemperature
+        }
+
+        if let waterlawSensor = packet.messages.getENUM_IN_CHILLER_WATERLAW_SENSOR()
+        {
+            logger.trace("WaterLaw Sensor: \(waterlawSensor)")
+            self.waterlawSensor = waterlawSensor
+        }
+
+        if let waterlawStatus = packet.messages.getENUM_IN_CHILLER_WATERLAW_ON_OFF()
+        {
+            logger.trace("Water Law Status [°C]: \(waterlawStatus)")
+            self.waterlawStatus = waterlawStatus
+        }
+
+        if let waterlawTemperature = packet.messages.getVAR_IN_TEMP_WATER_LAW_F()
+        {
+            logger.trace("WaterLaw Temperature [°C]: \(waterlawTemperature)")
+            self.waterlawTemperature = waterlawTemperature
         }
 
         if let roomTemperature = packet.messages.getVAR_in_temp_room_f()
