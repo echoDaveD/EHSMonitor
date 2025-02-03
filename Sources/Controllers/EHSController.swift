@@ -303,7 +303,12 @@ final class EHSController
 
         if let waterlawStatusRaw = packet.messages.getENUM_IN_CHILLER_WATERLAW_ON_OFF()
         {
-            let waterlawStatus: WaterLawState = waterlawStatusRaw ? .on : .off
+            let waterlawStatus: WaterLawState = switch waterlawStatusRaw {
+            case .Off:
+                .off
+            case .On:
+                .on
+            }
             logger.trace("Water Law Status [°C]: \(waterlawStatus)")
             self.waterlawStatus = waterlawStatus
         }
